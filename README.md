@@ -24,4 +24,5 @@ ensure dpemotes
 * [Original forum thread](https://forum.fivem.net/t/dpemotes-356ish-emotes-usable-while-walking-props-and-more/843105)
 * [Original author](https://github.com/andristum)
 * [Original Git link](https://github.com/andristum/dpemotes)
+
 *I do not take any credits for releasing this, everythig goes to @Dullpear*
