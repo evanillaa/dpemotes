@@ -2442,7 +2442,11 @@ function UIMenu.New(Title, Subtitle, X, Y, TxtDictionary, TxtName)
         OnProgressSelect = function(menu, progress, index) end,
         OnItemSelect = function(menu, item, index) end,
         OnMenuChanged = function(menu, newmenu, forward) end,
-        OnMenuClosed = function(menu) end,
+        OnMenuClosed = function(menu) 
+            if menu['Items'][2]['_Description'] == Config.Languages[Config.MenuLanguage]['cancelemoteinfo'] then
+                forceClosed()
+            end
+        end,
         Settings = {
             InstructionalButtons = true,
             MultilineFormats = true,

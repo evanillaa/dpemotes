@@ -124,6 +124,15 @@ DP.Shared = {
        EmoteMoving = true,
        EmoteDuration = 3000
    }},
+   --[[
+   ["anal"] = {"rcmpaparazzo_2", "shag_loop_a", "anal", "shag_loop_poppy", AnimationOptions =
+   {
+       EmoteLoop = true,
+   }},
+   ["carbj"] = {"rcmpaparazzo_2", "bj_loop_prostitute", "Car BJ", "bj_loop_male", AnimationOptions =
+   {
+       EmoteLoop = true,
+   }},]]--
    ["hug"] = {"mp_ped_interaction", "kisses_guy_a", "Hug", "hug2", AnimationOptions =
    {
        EmoteMoving = false,
@@ -1552,7 +1561,26 @@ DP.Emotes = {
        PtfxInfo = Config.Languages[Config.MenuLanguage]['pee'],
        PtfxWait = 3000,
    }},
-
+   ["analget"] = {"rcmpaparazzo_2", "shag_loop_poppy", "Anal Getter", AnimationOptions =
+   {
+      EmoteMoving = true,
+      EmoteLoop = true,
+   }},
+   ["analgiv"] = {"rcmpaparazzo_2", "shag_loop_a", "Anal Giver", AnimationOptions =
+   {
+      EmoteMoving = true,
+      EmoteLoop = true,
+   }},
+   ["carbjget"] = {"mini@prostitutes@sexnorm_veh", "bj_loop_male", "Car BJ Getter", AnimationOptions =
+   {
+      EmoteMoving = true,
+      EmoteLoop = true,
+   }},
+   ["carbjgiv"] = {"mini@prostitutes@sexnorm_veh", "bj_loop_prostitute", "Car BJ Giver", AnimationOptions =
+   {
+      EmoteMoving = true,
+      EmoteLoop = true,
+   }},
 -----------------------------------------------------------------------------------------------------------
 ------ These are Scenarios, some of these dont work on women and some other issues, but still good to have.
 -----------------------------------------------------------------------------------------------------------
@@ -1593,7 +1621,6 @@ DP.Emotes = {
    -- Sitchair is a litte special, since you want the player to be seated correctly.
    -- So we set it as "ScenarioObject" and do TaskStartScenarioAtPosition() instead of "AtPlace"
    ["sitchair"] = {"ScenarioObject", "PROP_HUMAN_SEAT_CHAIR_MP_PLAYER", "Sit Chair"},
-   ["smoke"] = {"Scenario", "WORLD_HUMAN_SMOKING", "Smoke"},
    ["smokeweed"] = {"MaleScenario", "WORLD_HUMAN_DRUG_DEALER", "Smoke Weed"},
    ["statue"] = {"Scenario", "WORLD_HUMAN_HUMAN_STATUE", "Statue"},
    ["sunbathe3"] = {"Scenario", "WORLD_HUMAN_SUNBATHE", "Sunbathe 3"},
@@ -1654,6 +1681,79 @@ DP.PropEmotes = {
        EmoteMoving = true,
    }},
 
+   ["batery"] = {"anim@heists@humane_labs@finale@keycards", "ped_a_enter_loop", "Mechanik - Baterie", AnimationOptions =
+   {
+       Prop = 'prop_battery_01',
+       PropBone = 18905,
+       PropPlacement = {0.10, -0.15, 0.03, -100.0, 0.0, -10.0},
+       EmoteMoving = true,
+       EmoteLoop = true
+   }},
+   ["plate"] = {"amb@world_human_tourist_map@male@base", "base", "Mechanik - Plate", AnimationOptions =
+   {
+       Prop = 'p_num_plate_02',
+       PropBone = 28422,
+       PropPlacement = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+       EmoteMoving = true,
+       EmoteLoop = true
+   }},
+   ["bumper"] = {"anim@heists@box_carry@", "idle", "Mechanik - Nárazník", AnimationOptions =
+   {
+       Prop = "prop_bumper_04",
+       PropBone = 60309,
+       PropPlacement = {0.070, -0.2, 0.255, -175.0, 295.0, 1.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["hood"] = {"anim@heists@box_carry@", "idle", "Mechanik - Kapota", AnimationOptions =
+   {
+       Prop = "prop_car_bonnet_02",
+       PropBone = 60309,
+       PropPlacement = {0.025, 0.08, 0.255, -145.0, 290.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["door"] = {"anim@heists@box_carry@", "idle", "Mechanik - Dvere", AnimationOptions =
+   {
+       Prop = "prop_car_door_01",
+       PropBone = 60309,
+       PropPlacement = {0.65, -0.25, 0.155, -158.0, 120.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["exhaust"] = {"missheistdocksprep1hold_cellphone", "static", "Mechanik - Výfuk", AnimationOptions =
+   {
+       Prop = "prop_car_exhaust_01",
+       PropBone = 57005,
+       PropPlacement = {0.25, -0.1, 0.0, 0.0, 266.0, -40.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["carseat"] = {"anim@heists@box_carry@", "idle", "Mechanik - Sedacka", AnimationOptions =
+   {
+       Prop = "prop_car_seat",
+       PropBone = 60309,
+       PropPlacement = {0.05, -0.1, 0.255, -145.0, 150.0, 1.5},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["wheel"] = {"anim@heists@box_carry@", "idle", "Mechanik - Kolo", AnimationOptions =
+   {
+       Prop = "prop_wheel_03",
+       PropBone = 60309,
+       PropPlacement = {0.016, 0.15, 0.255, -185.0, 250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["engine"] = {"anim@heists@box_carry@", "idle", "Mechanik - Motor", AnimationOptions =
+   {
+       Prop = "prop_car_engine_01",
+       PropBone = 60309,
+       PropPlacement = {-0.2, 0.08, 0.255, -145.0, 290.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+
 -----------------------------------------------------------------------------------------------------
 ------ This is an example of an emote with 2 props, pretty simple! ----------------------------------
 -----------------------------------------------------------------------------------------------------
@@ -1685,30 +1785,6 @@ DP.PropEmotes = {
        Prop = "prop_single_rose",
        PropBone = 18905,
        PropPlacement = {0.13, 0.15, 0.0, -100.0, 0.0, -20.0},
-       EmoteLoop = true,
-       EmoteMoving = true,
-   }},
-   ["smoke2"] = {"amb@world_human_aa_smoke@male@idle_a", "idle_c", "Smoke 2", AnimationOptions =
-   {
-       Prop = 'prop_cs_ciggy_01',
-       PropBone = 28422,
-       PropPlacement = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
-       EmoteLoop = true,
-       EmoteMoving = true,
-   }},
-   ["smoke3"] = {"amb@world_human_aa_smoke@male@idle_a", "idle_b", "Smoke 3", AnimationOptions =
-   {
-       Prop = 'prop_cs_ciggy_01',
-       PropBone = 28422,
-       PropPlacement = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
-       EmoteLoop = true,
-       EmoteMoving = true,
-   }},
-   ["smoke4"] = {"amb@world_human_smoking@female@idle_a", "idle_b", "Smoke 4", AnimationOptions =
-   {
-       Prop = 'prop_cs_ciggy_01',
-       PropBone = 28422,
-       PropPlacement = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
        EmoteLoop = true,
        EmoteMoving = true,
    }},

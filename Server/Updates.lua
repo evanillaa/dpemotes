@@ -1,8 +1,9 @@
 if Config.CheckForUpdates then
     Citizen.CreateThread( function()
-        updatePath = "/andristum/dpemotes"
-        resourceName = "dp Emotes ("..GetCurrentResourceName()..")"
-        PerformHttpRequest("https://raw.githubusercontent.com"..updatePath.."/master/version", checkVersion, "GET")
+        -- Turned off due to a lot of edits 
+        --updatePath = "/andristum/dpemotes"
+        --resourceName = "dp Emotes ("..GetCurrentResourceName()..")"
+        --PerformHttpRequest("https://raw.githubusercontent.com"..updatePath.."/master/version", checkVersion, "GET")
     end)
 end
 
