@@ -1,12 +1,26 @@
 # dpemotes
+Edited version with imporved functionality
 Emotes / Animations for fiveM with Prop support.
 
-Installation Instructions:
+## Changes in this fork
+* Performance improvements -> resource time took from 0.10 to 0.00 (using keymappings)
+* Script no longer requires **sql**, everything is saved in player's cache
+* You can create unlimited amount of custom command to execute desired animations -> **You can also bind those**
+* Some functions have been edited a bit, again to improve performance
 
-add dpemotes to your server.cfg
+**Quick preview**: https://streamable.com/n3k0sr
 
-start dpemotes
+**There may be some bugs, I didn't test it that much.**
 
-Other instructions please check the fivem forum thread
+## Installation Instructions
+* add  `dpemotes` to your **server.cfg**
+```
+ensure dpemotes
+```
+*Other instructions please check the fivem forum thread*
 
-https://forum.fivem.net/t/dpemotes-356ish-emotes-usable-while-walking-props-and-more/843105
+## Original post & Other info
+* [Original forum thread](https://forum.fivem.net/t/dpemotes-356ish-emotes-usable-while-walking-props-and-more/843105)
+* [Original author](https://github.com/andristum)
+* [Original Git link](https://github.com/andristum/dpemotes)
+*I do not take any credits for releasing this, everythig goes to @Dullpear*
