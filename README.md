@@ -4,7 +4,7 @@ Emotes / Animations for fiveM with Prop support.
 
 ## Changes in this fork
 * Performance improvements -> resource time took from 0.10 to 0.00 (using keymappings)
-* Script no longer requires **sql**, everything is saved in player's cache
+* Script no longer requires **sql**, everything is saved in cache
 * You can create unlimited amount of custom command to execute desired animations -> **You can also bind those**
 * Some functions have been edited a bit, again to improve performance
 * Removed version/update check due to changes and possible missmatch
