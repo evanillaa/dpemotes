@@ -7,6 +7,7 @@ Emotes / Animations for fiveM with Prop support.
 * Script no longer requires **sql**, everything is saved in player's cache
 * You can create unlimited amount of custom command to execute desired animations -> **You can also bind those**
 * Some functions have been edited a bit, again to improve performance
+* Removed version/update check due to changes and possible missmatch
 
 **Quick preview**: https://streamable.com/n3k0sr
 
