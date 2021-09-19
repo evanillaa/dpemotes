@@ -1544,6 +1544,11 @@ DP.Emotes = {
       EmoteMoving = true,
       EmoteDuration = 4000,
    }},
+   ["hairtie"] = {"amb@code_human_wander_idles@female@idle_a", "idle_a_hairtouch", "hairtie", AnimationOptions =
+   {
+      EmoteMoving = true,
+      EmoteDuration = 2000,
+   }},
    ["handsup"] = {"missminuteman_1ig_2", "handsup_base", "Hands Up", AnimationOptions =
    {
       EmoteMoving = true,
