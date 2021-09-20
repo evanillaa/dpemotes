@@ -83,10 +83,12 @@ lang = Config.MenuLanguage
 function AddEmoteMenu(menu)
     local submenu = _menuPool:AddSubMenu(menu, Config.Languages[lang]['emotes'], "", "", Menuthing, Menuthing)
     local dancemenu = _menuPool:AddSubMenu(submenu, Config.Languages[lang]['danceemotes'], "", "", Menuthing, Menuthing)
+    local animalmenu = _menuPool:AddSubMenu(submenu, Config.Languages[lang]['animalemotes'], "", "", Menuthing, Menuthing)   
     local propmenu = _menuPool:AddSubMenu(submenu, Config.Languages[lang]['propemotes'], "", "", Menuthing, Menuthing)
     table.insert(EmoteTable, Config.Languages[lang]['danceemotes'])
     table.insert(EmoteTable, Config.Languages[lang]['danceemotes'])
-
+    table.insert(EmoteTable, Config.Languages[lang]['animalemotes'])
+    
     if Config.SharedEmotesEnabled then
       sharemenu = _menuPool:AddSubMenu(submenu, Config.Languages[lang]['shareemotes'], Config.Languages[lang]['shareemotesinfo'], "", Menuthing, Menuthing)
       shareddancemenu = _menuPool:AddSubMenu(sharemenu, Config.Languages[lang]['sharedanceemotes'], "", "", Menuthing, Menuthing)
@@ -132,6 +134,13 @@ function AddEmoteMenu(menu)
       table.insert(DanceTable, a)
     end
 
+    for a,b in pairsByKeys(DP.AnimalEmotes) do
+	    x,y,z = table.unpack(b)
+      animalitem = NativeUI.CreateItem(z, "/e ("..a..")")
+      animalmenu:AddItem(animalitem)
+      table.insert(AnimalTable, a)
+    end
+    
     if Config.SharedEmotesEnabled then
       for a,b in pairsByKeys(DP.Shared) do
         x,y,z,otheremotename = table.unpack(b)
@@ -173,7 +182,11 @@ function AddEmoteMenu(menu)
     dancemenu.OnItemSelect = function(sender, item, index)
       EmoteMenuStart(DanceTable[index], "dances")
     end
-
+    
+    animalmenu.OnItemSelect = function(sender, item, index)
+      EmoteMenuStart(AnimalTable[index], "animals")
+    end
+    
     if Config.SharedEmotesEnabled then
       sharemenu.OnItemSelect = function(sender, item, index)
         if ShareTable[index] ~= 'none' then
