@@ -17,30 +17,12 @@ local PtfxPrompt = false
 local PtfxWait = 500
 local PtfxNoProp = false
 
-Citizen.CreateThread(function()
-  while true do
-
-    if (IsPedShooting(PlayerPedId()) and IsInAnimation) or (isLoggedIn and PlayerData.metadata['isdead'] and IsInAnimation) then
-      EmoteCancel()
-    end
-
-    if PtfxPrompt then
-      if not PtfxNotif then
-          SimpleNotify(PtfxInfo)
-          PtfxNotif = true
-      end
-      if IsControlPressed(0, 47) then
-        PtfxStart()
-        Wait(PtfxWait)
-        PtfxStop()
-      end
-    end
-
-    if Config.MenuKeybindEnabled then if IsControlPressed(0, Config.MenuKeybind) then OpenEmoteMenu() end end
-    if Config.EnableXtoCancel then if IsControlPressed(0, 73) then EmoteCancel() end end
-    Citizen.Wait(1)
-  end
-end)
+if Config.EnableXtoCancel then 
+  RegisterKeyMapping('emotes:cancelAnim', '(Anim) Cancel animation', 'keyboard', 'X')
+  RegisterCommand('emotes:cancelAnim', function()
+    EmoteCancel()
+  end)
+end
 
 -----------------------------------------------------------------------------------------------------
 -- Commands / Events --------------------------------------------------------------------------------
@@ -360,13 +342,13 @@ end
 
 function AddPropToPlayer(prop1, bone, off1, off2, off3, rot1, rot2, rot3)
   local Player = PlayerPedId()
-  local x,y,z = table.unpack(GetEntityCoords(Player))
-
+  local coords = GetEntityCoords(Player)
+	
   if not HasModelLoaded(prop1) then
     LoadPropDict(prop1)
   end
 
-  prop = CreateObject(GetHashKey(prop1), x, y, z+0.2,  true,  true, true)
+  prop = CreateObject(GetHashKey(prop1), coords.x, coords.y, coords.z + 0.2, true, true, true)
   AttachEntityToEntity(prop, Player, GetPedBoneIndex(Player, bone), off1, off2, off3, rot1, rot2, rot3, true, true, false, true, 1, true)
   table.insert(PlayerProps, prop)
   PlayerHasProp = true
@@ -498,6 +480,7 @@ function OnEmotePlay(EmoteName)
       PtfxWait = EmoteName.AnimationOptions.PtfxWait
       PtfxNotif = false
       PtfxPrompt = true
+	runPtfx()		
       PtfxThis(PtfxAsset)
     else
       DebugPrint("Ptfx = none")
@@ -508,6 +491,7 @@ function OnEmotePlay(EmoteName)
   TaskPlayAnim(PlayerPedId(), ChosenDict, ChosenAnimation, 2.0, 2.0, AnimationDuration, MovementType, 0, false, false, false)
   RemoveAnimDict(ChosenDict)
   IsInAnimation = true
+	inAnimShoot()
   MostRecentDict = ChosenDict
   MostRecentAnimation = ChosenAnimation
 
@@ -533,3 +517,30 @@ function OnEmotePlay(EmoteName)
   end
   return true
 end
+
+function runPtfx()
+  Citizen.CreateThread(function()
+    while PtfxPrompt do
+      if not PtfxNotif then
+        SimpleNotify(PtfxInfo)
+        PtfxNotif = true
+      end
+      if IsControlPressed(0, 74) then
+        PtfxStart()
+        Wait(PtfxWait)
+        PtfxStop()
+      end
+      Citizen.Wait(0)
+    end
+  end)
+end
+
+function inAnimShoot()
+  Citizen.CreateThread(function()
+    while IsInAnimation do
+      if IsPedShooting(PlayerPedId()) and IsInAnimation then
+        EmoteCancel()
+      end
+      Citizen.Wait(100)
+    end
+  end)
