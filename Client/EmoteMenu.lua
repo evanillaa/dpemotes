@@ -62,21 +62,17 @@ local FaceTable = {}
 local ShareTable = {}
 local FavoriteEmote = ""
 
-Citizen.CreateThread(function()
-  while true do
-    if Config.FavKeybindEnabled and not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-      if IsControlPressed(0, Config.FavKeybind) then
-        if not IsPedSittingInAnyVehicle(PlayerPedId()) then
-          if FavoriteEmote ~= "" then
-            EmoteCommandStart(nil,{FavoriteEmote, 0})
-            Wait(3000)
-          end
-        end
+if Config.FavKeybindEnabled then
+  RegisterKeyMapping('emotes:favorite', '(Anim) Favorite keybind', 'keyboard', Config.FavKeybind)
+  RegisterCommand('emotes:favorite', function()
+    if not IsPedSittingInAnyVehicle(PlayerPedId()) then
+      if FavoriteEmote ~= "" then
+        EmoteCommandStart(nil,{FavoriteEmote, 0})
+        Wait(3000)
       end
     end
-    Citizen.Wait(1)
-  end
-end)
+  end)
+end
 
 lang = Config.MenuLanguage
 
@@ -305,8 +301,24 @@ function AddInfoMenu(menu)
     infomenu:AddItem(u150)
 end
 
+local visible = false
+
 function OpenEmoteMenu()
-    mainMenu:Visible(not mainMenu:Visible())
+  visible = not mainMenu:Visible()
+
+  mainMenu:Visible(visible)
+    if visible then
+      Citizen.CreateThread(function()
+        while visible do
+          Citizen.Wait(0)
+          _menuPool:ProcessMenus()
+        end
+      end)
+    end
+end
+
+function forceClosed()
+  visible = false
 end
 
 function firstToUpper(str)
@@ -324,12 +336,12 @@ end
 
 _menuPool:RefreshIndex()
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        _menuPool:ProcessMenus()
-    end
-end)
+--Citizen.CreateThread(function()
+ --   while true do
+   --     Citizen.Wait(0)
+     --   _menuPool:ProcessMenus()
+   -- end
+--end)
 
 RegisterNetEvent("dp:Update")
 AddEventHandler("dp:Update", function(state)
