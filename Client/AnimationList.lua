@@ -184,6 +184,30 @@ DP.Shared = {
    }},
    ["slapped"] = {"melee@unarmed@streamed_variations", "victim_takedown_front_slap", "Slapped", "slap"},
    ["slapped2"] = {"melee@unarmed@streamed_variations", "victim_takedown_front_backslap", "Slapped 2", "slap2"},
+   ["receiveblowjob"] = {"misscarsteal2pimpsex", "pimpsex_punter", "Receive Blowjob", "Give Blowjob", AnimationOptions =
+   {
+      EmoteMoving = false,
+      EmoteDuration = 30000,
+      SyncOffsetFront = 0.63
+   }},
+   ["giveblowjob"] = {"misscarsteal2pimpsex", "pimpsex_hooker", "Give Blowjob", "Receive Blowjob", AnimationOptions =
+   {
+      EmoteMoving = false,
+      EmoteDuration = 30000,
+      SyncOffsetFront = 0.63
+   }},
+   ["streetsexmale"] = {"misscarsteal2pimpsex", "shagloop_pimp", "Street Sex Male", "Street Sex Female", AnimationOptions =
+   {
+      EmoteMoving = false,
+      EmoteLoop = true,
+      SyncOffsetFront = 0.50
+   }},
+   ["streetsexfemale"] = {"misscarsteal2pimpsex", "shagloop_hooker", "Street Sex Female", "Street Sex Male", AnimationOptions =
+   {
+      EmoteMoving = false,
+      EmoteLoop = true,
+      SyncOffsetFront = -0.50
+   }},
 }
 
 DP.Dances = {
@@ -369,6 +393,198 @@ DP.Dances = {
        PropBone = 28422,
        PropPlacement = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
        EmoteLoop = true,
+   }},
+   ["dj2"] = {"anim@amb@nightclub@djs@solomun@", "sol_idle_ctr_mid_a_sol", "DJ 2", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["dj3"] = {"anim@amb@nightclub@djs@solomun@", "sol_dance_l_sol", "DJ 3", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["dj4"] = {"anim@amb@nightclub@djs@black_madonna@", "dance_b_idle_a_blamadon", "DJ 4", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["dj5"] = {"anim@amb@nightclub@djs@dixon@", "dixn_end_dix", "DJ 5", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["dj5"] = {"anim@amb@nightclub@djs@dixon@", "dixn_idle_cntr_a_dix", "DJ 6", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["dj6"] = {"anim@amb@nightclub@djs@dixon@", "dixn_idle_cntr_b_dix", "DJ 7", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["dj7"] = {"anim@amb@nightclub@djs@dixon@", "dixn_idle_cntr_g_dix", "DJ 8", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["dj8"] = {"anim@amb@nightclub@djs@dixon@", "dixn_idle_cntr_gb_dix", "DJ 8", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["dj9"] = {"anim@amb@nightclub@djs@dixon@", "dixn_sync_cntr_j_dix", "DJ 9", AnimationOptions =
+   {
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+}
+
+DP.AnimalEmotes = {
+   ["bdogbark"] = {"creatures@rottweiler@amb@world_dog_barking@idle_a", "idle_a", "Bark (big dog)", AnimationOptions =
+   {
+      EmoteLoop = true
+   }},
+   ["bdogbeg"] = {"creatures@rottweiler@tricks@", "beg_loop", "Beg (big dog)", AnimationOptions =
+   {
+      EmoteLoop = true
+   }},
+   ["bdogitch"] = {"creatures@rottweiler@amb@world_dog_sitting@idle_a", "idle_a", "Itch (big dog)", AnimationOptions =
+   {
+      EmoteDuration = 2000
+   }},
+   ["bdogsleep"] = {"creatures@rottweiler@amb@sleep_in_kennel@", "sleep_in_kennel", "Sleep (big dog)", AnimationOptions =
+   {
+      EmoteLoop = true
+   }},
+   ["bdogsit"] = {"creatures@rottweiler@amb@world_dog_sitting@base", "base", "Sit (big dog)", AnimationOptions =
+   {
+      EmoteLoop = true
+   }},
+   ["sdogbark"] = {"creatures@pug@amb@world_dog_barking@idle_a", "idle_a", "Bark (small dog)", AnimationOptions =
+   {
+      EmoteLoop = true
+   }},
+   ["sdogitch"] = {"creatures@pug@amb@world_dog_sitting@idle_a", "idle_a", "Itch (small dog)", AnimationOptions =
+   {
+      EmoteDuration = 2000
+   }},
+   ["sdogsit"] = {"creatures@pug@amb@world_dog_sitting@idle_a", "idle_b", "Sit (small dog)", AnimationOptions =
+   {
+      EmoteLoop = true
+   }},
+   ["laydownsmalldog"] = {"creatures@pug@amb@world_dog_sitting@idle_a", "idle_c", "Lay Down (small dog)", AnimationOptions =
+   {
+      EmoteLoop = true
+   }},
+   ["sdogshake"] = {"creatures@pug@amb@world_dog_barking@idle_a", "idle_c", "Shake (small dog)", AnimationOptions =
+   {
+      EmoteLoop = true
+   }},
+   ["sdogdance"] = {"creatures@pug@move", "idle_turn_0", "Dance (small dog)", AnimationOptions =
+   {
+      Prop = 'ba_prop_battle_glowstick_01',
+      PropBone = 31086,
+      PropPlacement = {0.1500,-0.0300,0.0,0.0,0.0},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogbb"] = {"creatures@pug@move", "nill", "Baseball (small dog)", AnimationOptions =
+   {
+      Prop = 'w_am_baseball',
+      PropBone = 31086,
+      PropPlacement = {0.1500,-0.0500,0.0,0.0,0.0},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogburger"] = {"creatures@pug@move", "nill", "Burger (small dog)", AnimationOptions =
+   {
+      Prop = 'prop_cs_burger_01',
+      PropBone = 31086,
+      PropPlacement = {0.1500,-0.0400,0.0000,-90.0,0.0},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogcontroller"] = {"creatures@pug@move", "nill", "Controller (small dog)", AnimationOptions =
+   {
+      Prop = 'prop_controller_01',
+      PropBone = 31086,
+      PropPlacement = {0.1800,-0.0300,0.0000,-180.000,90.0000, 0.0000},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogdolla"] = {"creatures@pug@move", "nill", "Dollar Bill (small dog)", AnimationOptions =
+   {
+      Prop = 'p_banknote_onedollar_s',
+      PropBone = 31086,
+      PropPlacement = {0.1700,-0.0100,0.0000,90.0000, 0.0000, 0.000},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogdolla2"] = {"creatures@pug@move", "nill", "Dollar Bill Scrunched  (small dog)", AnimationOptions =
+   {
+      Prop = 'bkr_prop_scrunched_moneypage',
+      PropBone = 31086,
+      PropPlacement = {0.1700,0.000,0.0000,90.0000,00.0000, 00.0000},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogdolla3"] = {"creatures@pug@move", "nill", "Money Stack  (small dog)", AnimationOptions =
+   {
+      Prop = 'bkr_prop_money_wrapped_01',
+      PropBone = 31086,
+      PropPlacement = {0.1700,-0.0100,0.0000,90.0000, 0.0000, 0.000},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogdolla4"] = {"creatures@pug@move", "nill", "Money Bag  (small dog)", AnimationOptions =
+   {
+      Prop = 'ch_prop_ch_moneybag_01a',
+      PropBone = 31086,
+      PropPlacement = {0.1200,-0.2000,0.0000,-79.9999997,90.00, 0.0000},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogmic"] = {"creatures@pug@move", "nill", "Microphone (small dog)", AnimationOptions =
+   {
+      Prop = 'p_ing_microphonel_01',
+      PropBone = 31086,
+      PropPlacement = {0.1500,-0.0170,0.0300,0.000,0.0000, 0.0000},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogteddy"] = {"creatures@pug@move", "nill", "Teddy (small dog)", AnimationOptions =
+   {
+      Prop = 'v_ilev_mr_rasberryclean',
+      PropBone = 31086,
+      PropPlacement = {0.1500,-0.1100,-0.23,0.000,0.0000, 0.0000},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogteddy2"] = {"creatures@pug@amb@world_dog_sitting@idle_a", "idle_b", "Teddy 2 (small dog)", AnimationOptions =
+   {
+      Prop = 'v_ilev_mr_rasberryclean',
+      PropBone = 31086,
+      PropPlacement = {0.1500,-0.1100,-0.23,0.000,0.0000, 0.0000},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogtennis"] = {"creatures@pug@move", "nill", "Tennis Ball (small dog)", AnimationOptions =
+   {
+      Prop = 'prop_tennis_ball',
+      PropBone = 31086,
+      PropPlacement = {0.1500,-0.0600,0.0,0.0,0.0, 0.0},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["sdogtennisr"] = {"creatures@pug@move", "nill", "Tennis Racket (small dog)", AnimationOptions =
+   {
+      Prop = 'prop_tennis_rack_01',
+      PropBone = 31086,
+      PropPlacement = {0.1500,-0.0200,0.00,0.000,0.0000, -28.0000},
+      EmoteLoop = true,
+      EmoteMoving = false,
    }},
 }
 
@@ -1749,6 +1965,104 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
+
+      ["fishing1"] = {"amb@world_human_stand_fishing@idle_a", "idle_a", "Fishing1", AnimationOptions =
+   {
+      Prop = 'prop_fishing_rod_01',
+      PropBone = 60309,
+      PropPlacement = {0.0,0.0,0.0,0.0,0.0,0.0},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["fishing2"] = {"amb@world_human_stand_fishing@idle_a", "idle_b", "Fishing2", AnimationOptions =
+   {
+      Prop = 'prop_fishing_rod_01',
+      PropBone = 60309,
+      PropPlacement = {0.0,0.0,0.0,0.0,0.0,0.0},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["fishing3"] = {"amb@world_human_stand_fishing@idle_a", "idle_c", "Fishing3", AnimationOptions =
+   {
+      Prop = 'prop_fishing_rod_01',
+      PropBone = 60309,
+      PropPlacement = {0.0,0.0,0.0,0.0,0.0,0.0},
+      EmoteLoop = true,
+      EmoteMoving = false,
+   }},
+   ["suitcase"] = {"move_weapon@jerrycan@generic", "idle", "Suitcase", AnimationOptions =
+   {
+      Prop = "prop_ld_suitcase_01",
+      PropBone = 57005,
+      PropPlacement = {0.35, 0.0, 0.0, 0.0, 266.0, 90.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   ["suitcase2"] = {"move_weapon@jerrycan@generic", "idle", "Suitcase 2", AnimationOptions =
+   {
+      Prop = "prop_security_case_01",
+      PropBone = 57005,
+      PropPlacement = {0.13, 0.0, -0.01, 0.0, 280.0, 90.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   ["boombox"] = {"move_weapon@jerrycan@generic", "idle", "Boombox", AnimationOptions =
+   {
+      Prop = "prop_boombox_01",
+      PropBone = 57005,
+      PropPlacement = {0.27, 0.0, 0.0, 0.0, 263.0, 58.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   ["toolbox"] = {"move_weapon@jerrycan@generic", "idle", "Toolbox 1", AnimationOptions =
+   {
+      Prop = "v_ind_cs_toolbox4",
+      PropBone = 57005,
+      PropPlacement = {0.27, 0.0, 0.0, 0.0, 263.0, 58.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   ["binbag"] = {"missfbi4prepp1", "_idle_garbage_man", "Garbage Bag", AnimationOptions =
+   {
+      Prop = "prop_cs_street_binbag_01",
+      PropBone = 28422,
+      PropPlacement = {0.0, 0.0400, -0.0200, 0.0, 0.0, 0.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   ["beerbox"] = {"move_weapon@jerrycan@generic", "idle", "Beer Box 1", AnimationOptions =
+   {
+      Prop = "v_ret_ml_beerdus",
+      PropBone = 57005,
+      PropPlacement = {0.22, 0.0, 0.0, 0.0, 266.0, 48.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   ["beerbox2"] = {"move_weapon@jerrycan@generic", "idle", "Beer Box 2", AnimationOptions =
+   {
+      Prop = "v_ret_ml_beeram",
+      PropBone = 57005,
+      PropPlacement = {0.22, 0.0, 0.0, 0.0, 266.0, 48.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   ["beerbox3"] = {"move_weapon@jerrycan@generic", "idle", "Beer Box 3", AnimationOptions =
+   {
+      Prop = "v_ret_ml_beerpride",
+      PropBone = 57005,
+      PropPlacement = {0.22, 0.0, 0.0, 0.0, 266.0, 48.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   ["beerbox4"] = {"move_weapon@jerrycan@generic", "idle", "Beer Box 4", AnimationOptions =
+   {
+      Prop = "v_ret_ml_beerbar",
+      PropBone = 57005,
+      PropPlacement = {0.22, 0.0, 0.0, 0.0, 266.0, 60.0},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},
+   
    ["coffee"] = {"amb@world_human_drinking@coffee@male@idle_a", "idle_c", "Coffee", AnimationOptions =
    {
        Prop = 'p_amb_coffeecup_01',
@@ -2056,4 +2370,12 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
+   ["protest"] = {"rcmnigel1d", "base_club_shoulder", "protest", AnimationOptions =
+   {
+      Prop = "prop_cs_protest_sign_01",
+      PropBone = 57005,
+      PropPlacement = {0.1820, 0.2400, 0.0600, -69.3774235, 5.9142048, -13.9572354},
+      EmoteLoop = true,
+      EmoteMoving = true,
+   }},   
 }
