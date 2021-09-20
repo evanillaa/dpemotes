@@ -17,30 +17,12 @@ local PtfxPrompt = false
 local PtfxWait = 500
 local PtfxNoProp = false
 
-Citizen.CreateThread(function()
-  while true do
-
-    if (IsPedShooting(PlayerPedId()) and IsInAnimation) or (isLoggedIn and PlayerData.metadata['isdead'] and IsInAnimation) then
-      EmoteCancel()
-    end
-
-    if PtfxPrompt then
-      if not PtfxNotif then
-          SimpleNotify(PtfxInfo)
-          PtfxNotif = true
-      end
-      if IsControlPressed(0, 47) then
-        PtfxStart()
-        Wait(PtfxWait)
-        PtfxStop()
-      end
-    end
-
-    if Config.MenuKeybindEnabled then if IsControlPressed(0, Config.MenuKeybind) then OpenEmoteMenu() end end
-    if Config.EnableXtoCancel then if IsControlPressed(0, 73) then EmoteCancel() end end
-    Citizen.Wait(1)
-  end
-end)
+if Config.EnableXtoCancel then 
+  RegisterKeyMapping('emotes:cancelAnim', '(Anim) Cancel animation', 'keyboard', 'X')
+  RegisterCommand('emotes:cancelAnim', function()
+    EmoteCancel()
+  end)
+end
 
 -----------------------------------------------------------------------------------------------------
 -- Commands / Events --------------------------------------------------------------------------------
@@ -50,73 +32,28 @@ Citizen.CreateThread(function()
     TriggerEvent('chat:addSuggestion', '/e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
     TriggerEvent('chat:addSuggestion', '/e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
     TriggerEvent('chat:addSuggestion', '/emote', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
-    if Config.SqlKeybinding then
-      TriggerEvent('chat:addSuggestion', '/emotebind', 'Bind an emote', {{ name="key", help="num4, num5, num6, num7. num8, num9. Numpad 4-9!"}, { name="emotename", help="dance, camera, sit or any valid emote."}})
-      TriggerEvent('chat:addSuggestion', '/emotebinds', 'Check your currently bound emotes.')
-    end
+    TriggerEvent('chat:addSuggestion', '/emotebind', 'Bind an emote', {{ name="command", help="with this command you'll be able to play this animation"}, { name="emote", help="dance, camera, sit or any valid emote"}})
+    TriggerEvent('chat:addSuggestion', '/emoteunbind', 'Delete anim bind', {{ name="command", help="unbind and delete command (/emotebinds -> list your binds)"}})
+    TriggerEvent('chat:addSuggestion', '/emotebinds', 'Check your currently bound emotes.')
     TriggerEvent('chat:addSuggestion', '/emotemenu', 'Open dpemotes menu (F3) by default.')
     TriggerEvent('chat:addSuggestion', '/emotes', 'List available emotes.')
     TriggerEvent('chat:addSuggestion', '/walk', 'Set your walkingstyle.', {{ name="style", help="/walks for a list of valid styles"}})
     TriggerEvent('chat:addSuggestion', '/walks', 'List available walking styles.')
 end)
 
-RegisterCommand('e', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        EmoteCommandStart(source, args, raw)
-    end
-end)
-
-RegisterCommand('emote', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        EmoteCommandStart(source, args, raw)
-    end
-end)
-
-if Config.SqlKeybinding then
-    RegisterCommand('emotebind', function(source, args, raw)
-        if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-            EmoteBindStart(source, args, raw)
-        end
-    end)
-
-    RegisterCommand('emotebinds', function(source, args, raw)
-        if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-            EmoteBindsStart(source, args, raw)
-        end
-    end)
+RegisterCommand('e', function(source, args, raw) EmoteCommandStart(source, args, raw) end)
+RegisterCommand('emote', function(source, args, raw) EmoteCommandStart(source, args, raw) end)
+if Config.KeyBinding then
+  RegisterCommand('emotebinds', function(source, args, raw) EmoteBindsStart(source, args, raw) end)
 end
+if Config.MenuKeybindEnabled then
+  RegisterKeyMapping('emotemenu', '(~r~Anim~w~) Otevrit menu', 'keyboard', Config.MenuKeybind)
+end
+RegisterCommand('emotemenu', function(source, args, raw) OpenEmoteMenu() end)
+RegisterCommand('em', function(source, args, raw) EmotesOnCommand() end)
+RegisterCommand('walk', function(source, args, raw) WalkCommandStart(source, args, raw) end)
+RegisterCommand('walks', function(source, args, raw) WalksOnCommand() end)
 
-RegisterCommand('emotemenu', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        OpenEmoteMenu()
-    end
-end)
-
-RegisterCommand('em', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        OpenEmoteMenu()
-    end
-end)
-
-RegisterCommand('emotes', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        EmotesOnCommand()
-    end
-end)
-
-RegisterCommand('walk', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        WalkCommandStart(source, args, raw)
-    end
-end)
-
-RegisterCommand('walks', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        WalksOnCommand()
-    end
-end)
-
--- Added 
 
 CanDoEmote = true
 SmokingWeed = false
@@ -203,13 +140,10 @@ function EmoteCancel()
     DestroyAllProps()
     IsInAnimation = false
   end
-
-  -- Added
-
   if SmokingWeed then
     SmokingWeed = false
     RelieveCount = 0
-  end
+  end				
 end
 
 function EmoteChatMessage(args)
@@ -255,7 +189,7 @@ function EmotesOnCommand(source, args, raw)
   EmoteChatMessage(Config.Languages[lang]['emotemenucmd'])
 end
 
-function pairsByKeys (t, f)
+function pairsByKeys(t, f)
     local a = {}
     for n in pairs(t) do
         table.insert(a, n)
@@ -305,7 +239,7 @@ function EmoteCommandStart(source, args, raw)
         if IsInAnimation then
             EmoteCancel()
         else
-          QBCore.Functions.Notify('No Emote To Cancel', 'error')
+            QBCore.Functions.Notify('No Emote To Cancel', 'error')
         end
       return
     elseif name == "help" then
@@ -355,14 +289,15 @@ function DestroyAllProps()
 end
 
 function AddPropToPlayer(prop1, bone, off1, off2, off3, rot1, rot2, rot3)
+
   local Player = PlayerPedId()
-  local x,y,z = table.unpack(GetEntityCoords(Player))
+  local coords = GetEntityCoords(Player)
 
   if not HasModelLoaded(prop1) then
     LoadPropDict(prop1)
   end
 
-  prop = CreateObject(GetHashKey(prop1), x, y, z+0.2,  true,  true, true)
+  prop = CreateObject(GetHashKey(prop1), coords.x, coords.y, coords.z + 0.2,  true,  true, true)
   AttachEntityToEntity(prop, Player, GetPedBoneIndex(Player, bone), off1, off2, off3, rot1, rot2, rot3, true, true, false, true, 1, true)
   table.insert(PlayerProps, prop)
   PlayerHasProp = true
@@ -374,9 +309,19 @@ end
 -- V -- But i never really figured it out, if anyone has a better way of gender checking let me know.
 -- V -- Since this way doesnt work for ped models.
 -- V -- in most cases its better to replace the scenario with an animation bundled with prop instead.
+
+-- !!!!!!!!!!!!!! Function updated by Vojtiik
 -----------------------------------------------------------------------------------------------------
 
+
+
 function CheckGender()
+  PlayerGender = IsPedMale(PlayerPedId()) and 'male' or 'female'
+
+  DebugPrint("Set gender as = ("..PlayerGender..")")
+end
+
+--[[function CheckGender()
   local hashSkinMale = GetHashKey("mp_m_freemode_01")
   local hashSkinFemale = GetHashKey("mp_f_freemode_01")
 
@@ -386,26 +331,28 @@ function CheckGender()
     PlayerGender = "female"
   end
   DebugPrint("Set gender as = ("..PlayerGender..")")
-end
+end]]
 
 -----------------------------------------------------------------------------------------------------
 ------ This is the major function for playing emotes! -----------------------------------------------
+
+-- Function edited by Vojtiik -> Better performance
 -----------------------------------------------------------------------------------------------------
 
 function OnEmotePlay(EmoteName)
-
-  InVehicle = IsPedInAnyVehicle(PlayerPedId(), true)
+  local playerPed = PlayerPedId()
+  InVehicle = IsPedInAnyVehicle(playerPed, true)
   if not Config.AllowedInCars and InVehicle == 1 then
     return
   end
 
-  if not DoesEntityExist(PlayerPedId()) then
+  if not DoesEntityExist(playerPed) then
     return false
   end
 
   if Config.DisarmPlayer then
-    if IsPedArmed(PlayerPedId(), 7) then
-      SetCurrentPedWeapon(PlayerPedId(), GetHashKey('WEAPON_UNARMED'), true)
+    if IsPedArmed(playerPed, 7) then
+      SetCurrentPedWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), true)
     end
   end
 
@@ -417,7 +364,7 @@ function OnEmotePlay(EmoteName)
   end
 
   if ChosenDict == "Expression" then
-    SetFacialIdleAnimOverride(PlayerPedId(), ChosenAnimation, 0)
+    SetFacialIdleAnimOverride(playerPed, ChosenAnimation, 0)
     return
   end
 
@@ -425,25 +372,28 @@ function OnEmotePlay(EmoteName)
     CheckGender()
     if ChosenDict == "MaleScenario" then if InVehicle then return end
       if PlayerGender == "male" then
-        ClearPedTasks(PlayerPedId())
-        TaskStartScenarioInPlace(PlayerPedId(), ChosenAnimation, 0, true)
+        ClearPedTasks(playerPed)
+        TaskStartScenarioInPlace(playerPed, ChosenAnimation, 0, true)
         DebugPrint("Playing scenario = ("..ChosenAnimation..")")
         IsInAnimation = true
+        inAnimShoot()
       else
         EmoteChatMessage(Config.Languages[lang]['maleonly'])
       end return
     elseif ChosenDict == "ScenarioObject" then if InVehicle then return end
-      BehindPlayer = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0 - 0.5, -0.5);
-      ClearPedTasks(PlayerPedId())
-      TaskStartScenarioAtPosition(PlayerPedId(), ChosenAnimation, BehindPlayer['x'], BehindPlayer['y'], BehindPlayer['z'], GetEntityHeading(PlayerPedId()), 0, 1, false)
+      BehindPlayer = GetOffsetFromEntityInWorldCoords(playerPed, 0.0, 0 - 0.5, -0.5);
+      ClearPedTasks(playerPed)
+      TaskStartScenarioAtPosition(playerPed, ChosenAnimation, BehindPlayer['x'], BehindPlayer['y'], BehindPlayer['z'], GetEntityHeading(playerPed), 0, 1, false)
       DebugPrint("Playing scenario = ("..ChosenAnimation..")")
       IsInAnimation = true
+      inAnimShoot()
       return
     elseif ChosenDict == "Scenario" then if InVehicle then return end
-      ClearPedTasks(PlayerPedId())
-      TaskStartScenarioInPlace(PlayerPedId(), ChosenAnimation, 0, true)
+      ClearPedTasks(GetPlayerPed(-1))
+      TaskStartScenarioInPlace(GetPlayerPed(-1), ChosenAnimation, 0, true)
       DebugPrint("Playing scenario = ("..ChosenAnimation..")")
       IsInAnimation = true
+      inAnimShoot()
     return end 
   end
 
@@ -494,6 +444,7 @@ function OnEmotePlay(EmoteName)
       PtfxWait = EmoteName.AnimationOptions.PtfxWait
       PtfxNotif = false
       PtfxPrompt = true
+      runPtfx()
       PtfxThis(PtfxAsset)
     else
       DebugPrint("Ptfx = none")
@@ -501,12 +452,12 @@ function OnEmotePlay(EmoteName)
     end
   end
 
-  TaskPlayAnim(PlayerPedId(), ChosenDict, ChosenAnimation, 2.0, 2.0, AnimationDuration, MovementType, 0, false, false, false)
+  TaskPlayAnim(playerPed, ChosenDict, ChosenAnimation, 2.0, 2.0, AnimationDuration, MovementType, 0, false, false, false)
   RemoveAnimDict(ChosenDict)
   IsInAnimation = true
+  inAnimShoot()
   MostRecentDict = ChosenDict
   MostRecentAnimation = ChosenAnimation
-
   if EmoteName.AnimationOptions then
     if EmoteName.AnimationOptions.Prop then
         PropName = EmoteName.AnimationOptions.Prop
@@ -528,4 +479,32 @@ function OnEmotePlay(EmoteName)
     end
   end
   return true
+end
+
+function runPtfx()
+  Citizen.CreateThread(function()
+    while PtfxPrompt do
+      if not PtfxNotif then
+        SimpleNotify(PtfxInfo)
+        PtfxNotif = true
+      end
+      if IsControlPressed(0, 74) then
+        PtfxStart()
+        Wait(PtfxWait)
+        PtfxStop()
+      end
+      Citizen.Wait(0)
+    end
+  end)
+end
+
+function inAnimShoot()
+  Citizen.CreateThread(function()
+    while IsInAnimation do
+      if IsPedShooting(PlayerPedId()) and IsInAnimation then
+        EmoteCancel()
+      end
+      Citizen.Wait(100)
+    end
+  end)
 end
