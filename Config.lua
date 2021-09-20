@@ -95,6 +95,12 @@ Config.Languages = {
         ['notvalidkey'] = "is not a valid key.",
         ['keybinds'] = "🔢 Keybinds",
         ['keybindsinfo'] = "Use"
+	['nocommand'] = "No such command to unbind",
+	['alreadyexist'] = "This command already exists",
+	['invalidargs'] = "Invalid command arguments",
+	['binds'] = "Binds",
+	['nobinds'] = "You have no saved binds",
+	['command'] = "Command",	
   },
   ['fr'] = {
         ['emotes'] = 'Emotes',
