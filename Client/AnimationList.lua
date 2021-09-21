@@ -124,7 +124,6 @@ DP.Shared = {
        EmoteMoving = true,
        EmoteDuration = 3000
    }},
-   --[[
    ["anal"] = {"rcmpaparazzo_2", "shag_loop_a", "anal", "shag_loop_poppy", AnimationOptions =
    {
        EmoteLoop = true,
@@ -132,7 +131,7 @@ DP.Shared = {
    ["carbj"] = {"rcmpaparazzo_2", "bj_loop_prostitute", "Car BJ", "bj_loop_male", AnimationOptions =
    {
        EmoteLoop = true,
-   }},]]--
+   }},
    ["hug"] = {"mp_ped_interaction", "kisses_guy_a", "Hug", "hug2", AnimationOptions =
    {
        EmoteMoving = false,
@@ -1689,7 +1688,7 @@ DP.PropEmotes = {
        EmoteMoving = true,
    }},
 
-   ["batery"] = {"anim@heists@humane_labs@finale@keycards", "ped_a_enter_loop", "Mechanik - Baterie", AnimationOptions =
+   ["batery"] = {"anim@heists@humane_labs@finale@keycards", "ped_a_enter_loop", "Mechanic - Batteries", AnimationOptions =
    {
        Prop = 'prop_battery_01',
        PropBone = 18905,
@@ -1697,7 +1696,7 @@ DP.PropEmotes = {
        EmoteMoving = true,
        EmoteLoop = true
    }},
-   ["plate"] = {"amb@world_human_tourist_map@male@base", "base", "Mechanik - Plate", AnimationOptions =
+   ["plate"] = {"amb@world_human_tourist_map@male@base", "base", "Mechanic - Plate", AnimationOptions =
    {
        Prop = 'p_num_plate_02',
        PropBone = 28422,
@@ -1705,7 +1704,7 @@ DP.PropEmotes = {
        EmoteMoving = true,
        EmoteLoop = true
    }},
-   ["bumper"] = {"anim@heists@box_carry@", "idle", "Mechanik - Nárazník", AnimationOptions =
+   ["bumper"] = {"anim@heists@box_carry@", "idle", "Mechanic - Bumper", AnimationOptions =
    {
        Prop = "prop_bumper_04",
        PropBone = 60309,
@@ -1713,7 +1712,7 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
-   ["hood"] = {"anim@heists@box_carry@", "idle", "Mechanik - Kapota", AnimationOptions =
+   ["hood"] = {"anim@heists@box_carry@", "idle", "Mechanic - Kapota", AnimationOptions =
    {
        Prop = "prop_car_bonnet_02",
        PropBone = 60309,
@@ -1721,7 +1720,7 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
-   ["door"] = {"anim@heists@box_carry@", "idle", "Mechanik - Dvere", AnimationOptions =
+   ["door"] = {"anim@heists@box_carry@", "idle", "Mechanic - Doors", AnimationOptions =
    {
        Prop = "prop_car_door_01",
        PropBone = 60309,
@@ -1729,7 +1728,7 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
-   ["exhaust"] = {"missheistdocksprep1hold_cellphone", "static", "Mechanik - Výfuk", AnimationOptions =
+   ["exhaust"] = {"missheistdocksprep1hold_cellphone", "static", "Mechanic - Exhaust", AnimationOptions =
    {
        Prop = "prop_car_exhaust_01",
        PropBone = 57005,
@@ -1737,7 +1736,7 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
-   ["carseat"] = {"anim@heists@box_carry@", "idle", "Mechanik - Sedacka", AnimationOptions =
+   ["carseat"] = {"anim@heists@box_carry@", "idle", "Mechanic - Seat", AnimationOptions =
    {
        Prop = "prop_car_seat",
        PropBone = 60309,
@@ -1745,7 +1744,7 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
-   ["wheel"] = {"anim@heists@box_carry@", "idle", "Mechanik - Kolo", AnimationOptions =
+   ["wheel"] = {"anim@heists@box_carry@", "idle", "mechanics - say", AnimationOptions =
    {
        Prop = "prop_wheel_03",
        PropBone = 60309,
@@ -1753,7 +1752,7 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
-   ["engine"] = {"anim@heists@box_carry@", "idle", "Mechanik - Motor", AnimationOptions =
+   ["engine"] = {"anim@heists@box_carry@", "idle", "Mechanic - Motor", AnimationOptions =
    {
        Prop = "prop_car_engine_01",
        PropBone = 60309,
