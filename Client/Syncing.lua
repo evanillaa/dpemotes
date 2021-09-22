@@ -67,6 +67,7 @@ end)
 RegisterNetEvent("ClientEmoteRequestReceive")
 AddEventHandler("ClientEmoteRequestReceive", function(emotename, etype)
     isRequestAnim = true
+    requestingAnim()
     requestedemote = emotename
 
     if etype == 'Dances' then
@@ -79,30 +80,31 @@ AddEventHandler("ClientEmoteRequestReceive", function(emotename, etype)
     SimpleNotify(Config.Languages[lang]['doyouwanna']..remote.."~w~)")
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(5)
-        if IsControlJustPressed(1, 246) and isRequestAnim then
-        target, distance = GetClosestPlayer()
-            if(distance ~= -1 and distance < 3) then
-                if DP.Shared[requestedemote] ~= nil then
-                    _,_,_,otheremote = table.unpack(DP.Shared[requestedemote])
-                elseif DP.Dances[requestedemote] ~= nil then
-                    _,_,_,otheremote = table.unpack(DP.Dances[requestedemote])
+function requestingAnim()
+    Citizen.CreateThread(function()
+        while isRequestAnim do
+            Citizen.Wait(0)
+            if IsControlJustPressed(1, 246) and isRequestAnim then
+            target, distance = GetClosestPlayer()
+                if(distance ~= -1 and distance < 3) then
+                    if DP.Shared[requestedemote] ~= nil then
+                        _,_,_,otheremote = table.unpack(DP.Shared[requestedemote])
+                    elseif DP.Dances[requestedemote] ~= nil then
+                        _,_,_,otheremote = table.unpack(DP.Dances[requestedemote])
+                    end
+                    if otheremote == nil then otheremote = requestedemote end
+                    TriggerServerEvent("ServerValidEmote", GetPlayerServerId(target), requestedemote, otheremote)
+                    isRequestAnim = false
+                else
+                    SimpleNotify(Config.Languages[lang]['nobodyclose'])
                 end
-                if otheremote == nil then otheremote = requestedemote end
-                TriggerServerEvent("ServerValidEmote", GetPlayerServerId(target), requestedemote, otheremote)
+            elseif IsControlJustPressed(1, 182) and isRequestAnim then
+                SimpleNotify(Config.Languages[lang]['refuseemote'])
                 isRequestAnim = false
-            else
-                SimpleNotify(Config.Languages[lang]['nobodyclose'])
             end
-        elseif IsControlJustPressed(1, 182) and isRequestAnim then
-            SimpleNotify(Config.Languages[lang]['refuseemote'])
-            isRequestAnim = false
         end
-    end
-end)
-
+    end)
+end
 -----------------------------------------------------------------------------------------------------
 ------ Functions and stuff --------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------
