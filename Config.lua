@@ -13,10 +13,10 @@ Config = {
 	-- Set this if you really wanna disable emotes in cars, as of 1.7.2 they only play the upper body part if in vehicle
 	AllowedInCars = true,
 	-- You can disable the (F9) menu here / change the keybind.
-	MenuKeybindEnabled = true,
+	MenuKeybindEnabled = false,
 	MenuKeybind = 'F9', -- Get the button name here https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/
 	-- You can disable the Favorite emote KeyBinding here.
-	FavKeybindEnabled = false,
+	FavKeybindEnabled = true,
 	FavKeybind = '', -- Get the button name here https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/
 	-- You can change the header image for the f9 menu here
 	-- Use a 512 x 128 image!
