@@ -80,6 +80,7 @@ Config.Languages = {
 		['makeitrain'] = "Press ~y~G~w~ to make it rain.",
 		['pee'] = "Hold ~y~G~w~ to pee.",
 		['spraychamp'] = "Hold ~y~G~w~ to spray champagne",
+		['spray'] = "Hold ~y~CAPSLOCK~w~ to spray",
 		['bound'] = "Bound ",
 		['to'] = "to",
 		['currentlyboundemotes'] = " Currently bound emotes:",
@@ -139,7 +140,6 @@ Config.Languages = {
         ['notvalidkey'] = "n'est pas une clé valide.",
         ['keybinds'] = "🔢 Liens Clés",
         ['keybindsinfo'] = "Use",
-        -- added
         ['nocommand'] = "No such command to unbind",
         ['alreadyexist'] = "This command already exists",
         ['invalidargs'] = "Invalid command arguments",
@@ -193,7 +193,6 @@ Config.Languages = {
         ['notvalidkey'] = "ist kein gültiger schlüssel.",
         ['keybinds'] = "🔢 Tastenkombinationen",
         ['keybindsinfo'] = "verwenden",
-        -- added
         ['nocommand'] = "No such command to unbind",
         ['alreadyexist'] = "This command already exists",
         ['invalidargs'] = "Invalid command arguments",
@@ -247,7 +246,6 @@ Config.Languages = {
         ['notvalidkey'] = "är inte en giltig tangent.",
         ['keybinds'] = "🔢 Keybinds",
         ['keybindsinfo'] = "Använd",
-        -- added
         ['nocommand'] = "No such command to unbind",
         ['alreadyexist'] = "This command already exists",
         ['invalidargs'] = "Invalid command arguments",
@@ -301,7 +299,6 @@ Config.Languages = {
         ['notvalidkey'] = "no es una clave válida.",
         ['keybinds'] = "🔢 Keybinds",
         ['keybindsinfo'] = "Utilizar",
-        -- added
         ['nocommand'] = "No such command to unbind",
         ['alreadyexist'] = "This command already exists",
         ['invalidargs'] = "Invalid command arguments",
