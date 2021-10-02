@@ -1579,6 +1579,11 @@ DP.Emotes = {
       EmoteMoving = true,
       EmoteLoop = true,
    }},
+   ["id"] = {"friends@laf@ig_5", "nephew", "ID", AnimationOptions =
+   {
+       EmoteMoving = true,
+       EmoteDuration = 2500
+   }},	
    ["carbjgiv"] = {"mini@prostitutes@sexnorm_veh", "bj_loop_prostitute", "Car BJ Giver", AnimationOptions =
    {
       EmoteMoving = true,
